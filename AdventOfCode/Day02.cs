@@ -23,18 +23,20 @@ public class Day02 : BaseDay
         Scissors = 3
     }
 
+    private static E GetOpponentShape(string s) => s switch
+    {
+        "A" => E.Rock,
+        "B" => E.Paper,
+        "C" => E.Scissors,
+        _ => throw new ArgumentOutOfRangeException()
+    };
+
     private static int CalculateRoundScorePartOne(string s)
     {
         var res = 0;
         var p = s.Split(" ");
         Debug.Assert(p.Length == 2);
-        var a = p[0] switch
-        {
-            "A" => E.Rock,
-            "B" => E.Paper,
-            "C" => E.Scissors,
-            _ => throw new ArgumentOutOfRangeException()
-        };
+        var a = GetOpponentShape(p[0]);
         var x = p[1] switch
         {
             "X" => E.Rock,
@@ -59,13 +61,7 @@ public class Day02 : BaseDay
         var res = 0;
         var p = s.Split(" ");
         Debug.Assert(p.Length == 2);
-        var a = p[0] switch
-        {
-            "A" => E.Rock,
-            "B" => E.Paper,
-            "C" => E.Scissors,
-            _ => throw new ArgumentOutOfRangeException()
-        };
+        var a = GetOpponentShape(p[0]);
         res += p[1] switch
         {
             "X" => a switch
@@ -89,11 +85,7 @@ public class Day02 : BaseDay
         return res;
     }
     
-    public override ValueTask<string> Solve_1()
-    {
-        var score = _input.Split("\n").Select(CalculateRoundScorePartOne).Sum();
-        return new($"{score}");
-    }
+    public override ValueTask<string> Solve_1() => new($"{_input.Split("\n").Select(CalculateRoundScorePartOne).Sum()}");
     
     public override ValueTask<string> Solve_2() => new($"{_input.Split("\n").Select(CalculateRoundScorePartTwo).Sum()}");
 }
