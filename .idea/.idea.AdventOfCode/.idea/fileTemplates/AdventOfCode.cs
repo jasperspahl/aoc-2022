@@ -9,6 +9,11 @@ public class Day${NAME} : BaseDay
         _input = File.ReadAllText(InputFilePath);
     }
     
+    public Day${NAME}(string input)
+    {
+        _input = input;
+    }
+    
     public override ValueTask<string> Solve_1() => new("");
     
     public override ValueTask<string> Solve_2() => new("");
