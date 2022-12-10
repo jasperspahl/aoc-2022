@@ -1,0 +1,12 @@
+{
+	"$schema": "http://json.schemastore.org/template",
+	"author": "Jasper Spahl <jasperspahl@web.de>",
+	"classifications": ["Common", "Code"],
+	"identity":"AdventOfCode.Template.NewDay",
+	"name": "Advent of Code: new day",
+	"shortName": "aocday",
+	"tags": {
+		"language":"C#",
+		"type": "item"
+	}
+}
